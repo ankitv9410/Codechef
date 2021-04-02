@@ -1,0 +1,16 @@
+import java.util.Scanner;
+class Solution {
+	public static void main(String args[]) {
+		Scanner sc = new Scanner(System.in);
+		int wishAmount = sc.nextInt();
+		float accBalance = sc.nextFloat();
+		if (wishAmount % 5 == 0 && wishAmount < accBalance) {
+			accBalance -= wishAmount;
+			accBalance -= 0.5;
+			System.out.println(accBalance);
+		}
+		else
+			System.out.printf("%.2f",accBalance);
+		sc.close();
+	}
+}
