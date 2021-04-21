@@ -1,0 +1,64 @@
+There are n chocolates, and you are given an array of n numbers where the i-th number Ai is the flavour type of the i-th chocolate. Sebrina wants to eat as many different types 
+of chocolates as possible, but she also has to save at least x number of chocolates for her little brother.
+Find the maximum possible number of distinct flavour types Sebrina can have.
+
+Input:
+The first line contains an integer T --- the number of test cases.
+The first line of each test case consists of two integers n, x - The number of chocolates Sabrina has and the number of chocolates she has to save for her brother, respectively.
+The second line contains n integers A1,…,An, where the i-th chocolate has type Ai.
+
+Output:
+For each test case, output a single integer denoting the maximum possible number of distinct chocolate flavours Sabrina can eat.
+
+Constraints
+1≤T≤10
+1≤x≤n≤2⋅10^5
+1≤Ai≤10^9
+Sum of n over all test cases do not exceed 2⋅10^5
+Sample Input:
+3
+2 1
+1 2
+4 2
+1 1 1 1
+5 3
+50 50 50 100 100
+
+Sample Output:
+1
+1
+2
+EXPLANATION:
+In the first test case, she can give any 1 chocolate to her brother and can have the other for herself resulting in 1 flavour type for Sebrina.
+----------------------------------------------------
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+		static int counting_diffFlavors(int[] arr, int x) {
+		int count = 0;
+		Set<Integer> hs = new HashSet<>();
+		for (int i = 0; i < arr.length; i++)
+			hs.add(arr[i]);
+
+		count = hs.size();
+		int result = Math.min(arr.length - x, count);
+		return result;
+	}
+
+	public static void main(String args[]) {
+		Scanner sc = new Scanner(System.in);
+		int tc = sc.nextInt();
+		while (tc-- > 0) {
+			int n = sc.nextInt();
+			int x = sc.nextInt();
+			int arr[] = new int[n];
+			for (int i = 0; i < n; i++)
+				arr[i] = sc.nextInt();
+
+			System.out.println(Codechef.counting_diffFlavors(arr, x));
+		}
+	}
+}
