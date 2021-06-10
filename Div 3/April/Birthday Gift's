@@ -77,3 +77,30 @@ class Solution {
 		}
 	}
   myscanner
+  -----------------------------------------------------------------------------------
+  Scanner sc = new Scanner();
+			int t,n,k,j;
+			int sum1,sum2;
+			t = sc.nextInt();
+			while(t-->0) {
+				n = sc.nextInt();
+				k = sc.nextInt();
+				
+				sum1 = sum2 = 0;
+				int []arr = new int[n];
+				for(int i=0;i<n;i++)
+					arr[i] = sc.nextInt();
+				
+				Arrays.sort(arr);
+				j = n-1;
+				while(true) {
+					k--;
+					sum1 += arr[j];
+					sum2 += arr[j-1];
+					j = j-2;
+					if(k==0)
+						break;
+				}
+				sum2 += arr[j];
+				System.out.println(Math.max(sum1,sum2));
+			}
